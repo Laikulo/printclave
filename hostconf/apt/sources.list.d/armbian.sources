@@ -1,0 +1,5 @@
+Types: deb
+URIs: http://apt.printclave.net/armbian
+Suites: trixie
+Components: main trixie-utils trixie-desktop
+Signed-By: /usr/share/keyrings/armbian-archive-keyring.gpg
