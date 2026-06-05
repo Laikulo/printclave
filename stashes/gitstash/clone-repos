@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -x -e
+
+if ! [[ -d repos ]]; then
+	mkdir repos
+fi
+
+while read -r repo target; do
+
+	dest="repos/$target"
+	if ! [[ -d $dest ]]; then
+		git clone --bare "$repo" "$dest"
+	else
+		GIT_DIR="$dest" git fetch --all
+	fi
+
+	GIT_DIR="$dest" git repack -ad
+
+	if ! [[ -f $dest/git-daemon-export-ok ]]; then
+		touch "$dest/git-daemon-export-ok"
+	fi
+
+	GIT_DIR="$dest" git config set uploadpack.allowFilter true
+
+done < repotab
