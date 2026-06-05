@@ -1,0 +1,13 @@
+set base_path /mnt/output
+set nthreads 5
+set limit_rate 250m
+set run_postmirror 0
+
+deb-arm64 https://github.armbian.com/configng stable main
+
+deb-arm64 https://mirrors.dotsrc.org/armbian-apt trixie main trixie-utils trixie-desktop
+
+deb-arm64 http://ftp.us.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-arm64 http://ftp.us.debian.org/debian trixie-backports main contrib non-free non-free-firmware
+deb-arm64 http://ftp.us.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb-arm64 http://security.debian.org/ trixie-security main contrib non-free non-free-firmware
