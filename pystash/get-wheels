@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
 script_dir="$(dirname "$0")"
-whl_dir="$script_dir/whls"
+whl_dir="$script_dir/dist/whls"
 cache_dir="$script_dir/cache"
 
 typeset -a pip_args
