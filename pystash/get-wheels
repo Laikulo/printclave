@@ -1,0 +1,15 @@
+#!/usr/bin/env bash 
+
+script_dir="$(dirname "$0")"
+whl_dir="$script_dir/whls"
+cache_dir="$script_dir/cache"
+
+typeset -a pip_args
+pip_args=( --wheel-dir "$whl_dir" )
+pip_args+=( --cache-dir "$cache_dir" )
+
+set -e -x
+for req_file in sources/*-requirements.txt; do
+	# We do these one at a time, because different projects might have conflicting items
+	pip wheel "${pip_args[@]}"  -r "$req_file"
+done

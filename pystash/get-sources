@@ -1,0 +1,22 @@
+#!/usr/bin/env bash 
+
+file_from_git() {
+# repo, ref, file, output
+	GIT_DIR="$1" git cat-file --textconv "$2:$3" > "$4"
+}
+
+git_stash="/srv/git"
+script_dir="$(dirname "$0")"
+out_dir="$script_dir/sources"
+
+set -x
+
+file_from_git "$git_stash"/klipper.git       master scripts/klippy-requirements.txt        "$out_dir"/klippy-requirements.txt
+file_from_git "$git_stash"/kalico.git        main   scripts/klippy-requirements.txt        "$out_dir"/kalico-requirements.txt
+file_from_git "$git_stash"/moonraker.git     master scripts/moonraker-requirements.txt     "$out_dir"/moonraker-requirements.txt
+file_from_git "$git_stash"/moonraker.git     master scripts/moonraker-speedups.txt         "$out_dir"/moonraker-speedups-requirements.txt
+file_from_git "$git_stash"/klipperscreen.git master scripts/KlipperScreen-requirements.txt "$out_dir"/KlipperScreen-requirements.txt
+
+# Remove find_links from moonraker
+sed -i '/^--/ d' "$out_dir"/moonraker-requirements.txt
+
