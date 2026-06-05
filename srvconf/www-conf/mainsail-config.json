@@ -1,0 +1,14 @@
+{
+    "defaultLocale": "en",
+    "defaultMode": "dark",
+    "defaultTheme": "mainsail",
+    "hostname": null,
+    "port": null,
+    "path": null,
+    "instancesDB": "json",
+    "instances": [
+      { "name": "quincy", "hostname": "escher.haun.haus", "port": 80, "path": "/moonraker/quincy" },
+      { "name": "ohmega", "hostname": "escher.haun.haus", "port": 80, "path": "/moonraker/ohmega" },
+      { "name": "v2", "hostname": "escher.haun.haus", "port": 80, "path": "/moonraker/v2" }
+    ]
+}

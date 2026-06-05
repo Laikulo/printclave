@@ -1,0 +1,78 @@
+# The Caddyfile is an easy way to configure your Caddy web server.
+#
+# Unless the file starts with a global options block, the first
+# uncommented line is always the address of your site.
+#
+# To use your own domain name (with automatic HTTPS), first make
+# sure your domain's A/AAAA DNS records are properly pointed to
+# this machine's public IP, then replace ":80" below with your
+# domain name.
+{
+	log default {
+		output file /var/log/caddy/caddylog
+		format console
+	}
+}
+
+:80 {
+	@printclave remote_ip 172.16.20.0/24
+	@outside not remote_ip 172.16.20.0/24
+
+	handle @printclave {
+		@spoolman {
+			host spoolman.printclave.net
+		}
+		reverse_proxy @spoolman {
+			to http://spoolman.haun.haus
+			header_up Host spoolman.haun.haus
+			header_up -X-Forwarded-*
+			transport http {
+				keepalive off
+				versions 1
+			}
+		}
+		@apt {
+			host apt.printclave.net
+		}
+		handle @apt {
+			root * /media/repos
+			file_server browse
+		}
+		@pyhost {
+			host py.printclave.net
+		}
+		handle @pyhost {
+			root * /media/py
+			file_server browse
+		}
+
+		root * /srv/www/inside
+		file_server
+	}
+
+	handle @outside {
+		rewrite /fluidd/config.json /conf/fluidd-config.json
+		rewrite /mainsail/config.json /conf/mainsail-config.json
+		root * /srv/www/outside
+		file_server
+		handle_path /fluidd/* {
+			root * /media/fluidd
+		}
+		handle_path /mainsail/* {
+			root * /media/mainsail
+			try_files {path} /index.html
+		}
+		reverse_proxy /moonraker/quincy/* http://172.16.20.132:7125
+		reverse_proxy /moonraker/ohmega/* http://172.16.20.97:7125
+		reverse_proxy /moonraker/v2/* http://172.16.20.121:7125
+		redir /fluidd /fluidd/
+		redir /mainsail /mainsail/
+	}
+
+	handle_errors {
+		respond "[{err.status_code}] {err.status_text}"
+	}
+}
+
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile
