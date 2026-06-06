@@ -11,11 +11,12 @@ out_dir="$script_dir/sources"
 
 set -x
 
-file_from_git "$git_stash"/klipper.git       master scripts/klippy-requirements.txt        "$out_dir"/klippy-requirements.txt
-file_from_git "$git_stash"/kalico.git        main   scripts/klippy-requirements.txt        "$out_dir"/kalico-requirements.txt
-file_from_git "$git_stash"/moonraker.git     master scripts/moonraker-requirements.txt     "$out_dir"/moonraker-requirements.txt
-file_from_git "$git_stash"/moonraker.git     master scripts/moonraker-speedups.txt         "$out_dir"/moonraker-speedups-requirements.txt
-file_from_git "$git_stash"/klipperscreen.git master scripts/KlipperScreen-requirements.txt "$out_dir"/KlipperScreen-requirements.txt
+file_from_git "$git_stash"/klipper.git        master scripts/klippy-requirements.txt        "$out_dir"/klippy-requirements.txt
+file_from_git "$git_stash"/kalico.git         main   scripts/klippy-requirements.txt        "$out_dir"/kalico-requirements.txt
+file_from_git "$git_stash"/moonraker.git      master scripts/moonraker-requirements.txt     "$out_dir"/moonraker-requirements.txt
+file_from_git "$git_stash"/moonraker.git      master scripts/moonraker-speedups.txt         "$out_dir"/moonraker-speedups-requirements.txt
+file_from_git "$git_stash"/klipperscreen.git  master scripts/KlipperScreen-requirements.txt "$out_dir"/KlipperScreen-requirements.txt
+file_from_git "$git_stash"/beacon_klipper.git master requirements.txt                       "$out_dir"/beacon-requirements.txt
 
 # Remove find_links from moonraker
 sed -i '/^--/ d' "$out_dir"/moonraker-requirements.txt
