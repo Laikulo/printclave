@@ -1,0 +1,16 @@
+- name: Install kiauh
+  git:
+    dest: "~/kiauh"
+    repo: "git://git.printclave.net/kiauh.git"
+    version: "{{printhost_kiauh_version|default('HEAD')}}"
+
+- name: Configure kiauh
+  copy:
+    src: kiauh.cfg
+    dest: "~/kiauh/kiauh.cfg"
+
+- name: Create convenience symlink
+  file:
+    state: link
+    src: "~/kiauh/kiauh.sh"
+    path: "~/.local/bin/kiauh"

@@ -1,0 +1,5 @@
+- name: Ensure local bindir exists
+  file:
+    state: directory
+    path: ~/.local/bin
+# No need to add to profile. Bash's default profile on debian already will

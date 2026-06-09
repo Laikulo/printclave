@@ -1,0 +1,5 @@
+- name: configure pip index
+  copy:
+    src: pip.conf
+    dest: /etc/pip.conf
+  register: pip_conf_global

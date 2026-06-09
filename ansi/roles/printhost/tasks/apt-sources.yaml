@@ -1,0 +1,13 @@
+- name: Configure sources
+  copy:
+    src: sources/{{item}}.sources
+    dest: /etc/apt/sources.list.d/{{item}}.sources
+  loop:
+    - debian
+    - armbian
+    - armbian-config
+  register: sources_cp
+
+- name: Flush apt cache
+  when: sources_cp.changed
+  shell: apt-get distclean

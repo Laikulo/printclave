@@ -1,0 +1,4 @@
+- name: Common packages
+  package:
+    name: git,python3
+    state: present

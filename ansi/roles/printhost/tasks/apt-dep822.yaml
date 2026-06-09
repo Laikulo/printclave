@@ -1,0 +1,50 @@
+- name: Configure sources (debian)
+  deb822_repository:
+    name: debian
+    types: deb
+    uris: http://apt.printclave.net/debian
+    suites:
+      - trixie
+      - trixie-updates
+      - trixie-backports
+    components:
+      - main
+      - contrib
+      - non-free
+      - non-free-firmwareo
+    signed_by: "/usr/share/keyrings/debian-archive-keyring.gpg"
+
+- name: Configure sources (debian-security)
+  deb822_repository:
+    name: debian-security
+    types: deb
+    uris: http://apt.printclave.net/debian-security
+    suites:
+      - trixie-security
+    components:
+      - main
+      - contrib
+      - non-free
+      - non-free-firmware
+    signed_by: "/usr/share/keyrings/debian-archive-keyring.gpg"
+
+- name: Configure sources (armbian)
+  deb822_repository:
+    name: armbian
+    types: deb
+    uris: http://apt.printclave.net/armbian
+    suites:
+      - trixie
+    components:
+      - main
+      - trixie-utils
+      - trixie-desktop
+    signed_by: "/usr/share/keyrings/armbian-archive-keyring.gpg"
+
+- name: Configure sources (armbian-config)
+  deb822_repository:
+    name: armbian-config
+    types: deb
+    uris: http://apt.printclave.net/armbian-config
+    components: main
+    signed_by: "/usr/share/keyrings/armbian.gpg"

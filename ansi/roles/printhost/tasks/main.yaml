@@ -1,0 +1,8 @@
+- block:
+  - import_tasks: apt-sources.yaml
+  - import_tasks: package-baseline.yaml
+  - import_tasks: pip-sources.yaml
+  become: yes
+
+- import_tasks: profile-setup.yaml
+- import_tasks: kiauh.yaml

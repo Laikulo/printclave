@@ -1,0 +1,13 @@
+---
+- hosts: printhosts
+  name: Patch print hosts
+  become: yes
+  tasks:
+    - name: update all packages
+      package:
+        name: '*'
+        state: latest
+      register: update_all_packages
+    - name: post-restart reboot
+      when: update_all_packages.changed
+      reboot:
