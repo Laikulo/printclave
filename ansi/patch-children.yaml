@@ -8,6 +8,6 @@
         name: '*'
         state: latest
       register: update_all_packages
-    - name: post-restart reboot
+    - name: post-update reboot
       when: update_all_packages.changed
       reboot:

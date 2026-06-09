@@ -1,4 +1,5 @@
 ---
 - hosts: printhosts
   roles:
+    - enclavehost
     - printhost
