@@ -3,3 +3,4 @@ URIs: http://apt.printclave.net/armbian-config
 Suites: stable
 Components: main
 Signed-By: /usr/share/keyrings/armbian.gpg
+Check-Date: no

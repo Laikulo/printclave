@@ -3,3 +3,4 @@ URIs: http://apt.printclave.net/armbian
 Suites: trixie
 Components: main trixie-utils trixie-desktop
 Signed-By: /usr/share/keyrings/armbian.gpg
+Check-Date: no
