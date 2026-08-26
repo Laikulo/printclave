@@ -1,8 +1,9 @@
-https://github.com/klipper3d/klipper.git 		klipper.git
-https://github.com/kalicocrew/kalico.git 		kalico.git
-https://github.com/arksine/katapult.git			katapult.git
-https://github.com/dw-0/kiauh.git			kiauh.git
-https://github.com/KlipperScreen/KlipperScreen.git	klipperscreen.git
-https://github.com/arksine/moonraker.git		moonraker.git
-https://github.com/beacon3d/beacon_klipper.git		beacon_klipper.git
-https://github.com/andrewmcgr/klipper_tmc_autotune.git  klipper_tmc_autotune.git
+https://github.com/klipper3d/klipper.git 			klipper.git
+https://github.com/kalicocrew/kalico.git 			kalico.git
+https://github.com/arksine/katapult.git				katapult.git
+https://github.com/dw-0/kiauh.git				kiauh.git
+https://github.com/KlipperScreen/KlipperScreen.git		klipperscreen.git
+https://github.com/arksine/moonraker.git			moonraker.git
+https://github.com/beacon3d/beacon_klipper.git			beacon_klipper.git
+https://github.com/andrewmcgr/klipper_tmc_autotune.git  	klipper_tmc_autotune.git
+https://github.com/TheSpaghettiDetective/moonraker-obico.git	moonraker_obico.git
